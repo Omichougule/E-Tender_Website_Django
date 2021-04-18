@@ -60,12 +60,15 @@
 	form_fields[1].placeholder='';
 	form_fields[2].placeholder='';
 	form_fields[3].placeholder='';
-	form_fields[4].placeholder='';
+	form_fields[4].placeholder='yyyy-mm-dd hh:mm';
+	form_fields[5].placeholder='yyyy-mm-dd hh:mm';
 	for (var field in form_fields){
 		form_fields[field].className += ' form-control'
 	}
 	</script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <!-- admin date calender -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>   
 	<br><br>
 
 {% endblock content %}

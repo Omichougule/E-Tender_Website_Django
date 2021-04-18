@@ -18,5 +18,5 @@ urlpatterns = [
 	path('quotation/', views.quotation, name="quotation"),
 	path('updateasclosed/<int:pk>/', views.updateasclosed, name="updateasclosed"),
 	path('awarded/', views.awarded, name="awarded"),
-	path('jsi18n', JavaScriptCatalog.as_view(), name='js-catlog'),
+	path('jsi18n', JavaScriptCatalog.as_view(), name='js-catlog'),  #admin date calender
 ]

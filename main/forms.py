@@ -9,7 +9,9 @@ from django.contrib.admin.widgets import *
 # class DateTimeInput(forms.DateTimeInput):
 # 	input_type = 'date'
 
-class TenderForm(ModelForm):
+
+# Float Tender Form
+class TenderForm(ModelForm): 
 	class Meta:
 		model = Tender
 		fields = ['product','description','quantity','startdate','duedate']
@@ -20,17 +22,23 @@ class TenderForm(ModelForm):
 			'duedate': AdminDateWidget(),
 		}
 
+
+# User Registration Form
 class CreateUserForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['username', 'email', 'password1', 'password2']
 
+
+#New Quotation bid Form
 class QuotReceivedForm(ModelForm):
 	class Meta:
 		model = Quotation
 		fields = ['tender', 'quotamount']
 
-class QuotStatusChange(ModelForm):
-	class Meta:
-		model = Quotation
-		fields = ['tender', 'quotamount', 'status']
+
+#
+#class QuotStatusChange(ModelForm):
+#	class Meta:
+#		model = Quotation
+#		fields = ['tender', 'quotamount', 'status']
