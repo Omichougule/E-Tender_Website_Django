@@ -1,0 +1,73 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+
+{{ form.media }}
+<div class="container h-100">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card1"><br>
+			<div class="d-flex justify-content-center">
+				<h3 id="form-title">NEW TENDER FLOAT</h3>
+			</div>
+			<div class="d-flex justify-content-center form_container">
+				<form method="POST" action="">
+					{% csrf_token %}
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text">Product &emsp;&emsp;</span>
+						</div>
+						{{form.product}}
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text">Description&ensp;&nbsp;</span>
+						</div>
+						{{form.description}}
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text">Quantity&emsp;&emsp;</span>
+						</div>
+						{{form.quantity}}
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text">Start Date&emsp;&nbsp;</span>
+						</div>
+						{{form.startdate}}
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text">Due Date&emsp;&ensp;</span>
+						</div>
+						{{form.duedate}}
+					</div>
+					
+					<div class="d-flex justify-content-center mt-3 login_container">
+							<input class="btn login_btn" type="submit" value="Submit">
+					</div><br>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{{form.errors}}
+<script>
+
+	//Query All input fields
+	var form_fields = document.getElementsByTagName('input')
+	form_fields[1].placeholder='';
+	form_fields[2].placeholder='';
+	form_fields[3].placeholder='';
+	form_fields[4].placeholder='';
+	for (var field in form_fields){
+		form_fields[field].className += ' form-control'
+	}
+	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<br><br>
+
+{% endblock content %}
+
+

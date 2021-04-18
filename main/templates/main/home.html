@@ -1,0 +1,25 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+			<h3>Current Open Tenders</h3>
+			<div class="box-element">
+				<div class="cart-row">
+					<div style="flex:1"><strong>Tender No</strong></div>
+					<div style="flex:1"><strong>Agriculatural Product</strong></div>
+					<div style="flex:1"><strong>Description</strong></div>
+					<div style="flex:1"><strong>Quantity in Kg</strong></div>
+					<div style="flex:1"><strong>Tender Open Date</strong></div>
+					<div style="flex:1"><strong>Tender Due Date</strong></div>
+				</div>
+				{% for tender in tenders %}
+				<div class="cart-row">
+					<div style="flex:1">{{tender.id}}</div>
+					<div style="flex:1">{{tender.product}}</div>
+					<div style="flex:1">{{tender.description}}</div>
+					<div style="flex:1">{{tender.quantity}}</div>
+					<div style="flex:1">{{tender.startdate}}</div>
+					<div style="flex:1">{{tender.duedate}}</div>
+				</div>
+				{% endfor %}
+			</div>
+{% endblock content %}

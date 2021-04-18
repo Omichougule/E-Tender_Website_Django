@@ -1,0 +1,55 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+	<center><h1>Quotations Received</h1></center>
+	<br><br>
+	
+		<div class="col-sm-12">
+			<div class="box-element">
+				<hr>
+				<div class="cart-row">
+					<div style="flex:1"><strong>Quotation No</strong></div>
+					<div style="flex:1"><strong>Seller</strong></div>
+					<div style="flex:1"><strong>Tender No</strong></div>
+					<div style="flex:1"><strong>Tender Floated By</strong></div>
+					<div style="flex:1"><strong>Quotation Amount</strong></div>
+					<div style="flex:1"><strong>Status</strong></div>
+					<div style="flex:1"><strong></strong></div>
+				</div>
+
+				{% for q in quotations %}
+					{% if request.user == q.tender.user %}
+					<div class="cart-row">
+						<div style="flex:1">{{q.id}}</div>
+						<div style="flex:1">{{q.user}}</div>
+						<div style="flex:1">{{q.tender.id}}</div>
+						<div style="flex:1">{{q.tender.user}}</div>
+						<div style="flex:1">{{q.quotamount}}</div>
+						<div style="flex:1">{{q.status}}</div>
+						<div style="flex:1"><a class="btn btn-sm btn-info" href="{% url 'updateasclosed' q.id %}" data-html="true" data-toggle="tooltip"
+							title="Update status as Awarded" data-placement="bottom">Update</a></div>
+						</div>
+						<!-- <div style="flex:1"><strong><a role="button" class="btn btn-block nav-link btn-warning" data-toggle="tooltip" 
+							data-html="true" title="Update status as Awarded"
+							data-placement="bottom" >Update</a></div>
+						</div> -->
+					{% endif %}
+				{% endfor %}
+			</div>
+			<br><br>
+				<!-- <br>
+				<strong>Close the Tender</strong>
+				<br>
+				<form action="" method="post">
+				{% csrf_token %}
+				Enter Tender No:<Input type="number" name = "tenderno">
+				Enter Quotation No:<Input type="number" name = "quotationno">
+				<input type="submit">
+
+					#Update tenderno status as Awarded and Quotation no status also as Awarded
+				<br>
+				</form> -->
+		</div>
+
+{% endblock content %}

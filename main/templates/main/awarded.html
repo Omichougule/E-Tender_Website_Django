@@ -1,0 +1,39 @@
+{% extends 'main/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+	<div class="box-element">
+		<center><h1>Congratulations</h1>
+			<h2>Tenders Awarded List</h2></center>
+	</div>
+
+	<br>
+	<br>
+
+			<div class="box-element">
+				<hr>
+				<div class="cart-row">
+					<div style="flex:1"><strong>Tender No</strong></div>
+					<div style="flex:1"><strong>Agriculatural Product</strong></div>
+					<div style="flex:1"><strong>Description</strong></div>
+					<div style="flex:1"><strong>Quantity in Kg</strong></div>
+					<div style="flex:1"><strong>Tender Awarded To</strong></div>
+					<div style="flex:1"><strong>Quotation id</strong></div>
+				</div>
+				{% for q in quotations %}
+				<div class="cart-row">
+					<div style="flex:1">{{q.tender.id}}</div>
+					<div style="flex:1">{{q.tender.product}}</div>
+					<div style="flex:1">{{q.tender.description}}</div>
+					<div style="flex:1">{{q.tender.quantity}}</div>
+					<div style="flex:1">{{q.user}}</div>
+					<div style="flex:1">{{q.id}}</div>
+				</div>
+				{% endfor %}
+			</div>
+			<br>
+			<br>
+
+{% endblock content %}
