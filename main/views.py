@@ -170,6 +170,10 @@ def awarded(request):
 def contactus(request):
 	return render(request, 'main/contactus.html')
 
+# Tender Process page
+def tenderprocess(request):
+	return render(request, 'main/tenderprocess.html')
+
 # About us Page
 def aboutus(request):
 	return render(request, 'main/aboutus.html')

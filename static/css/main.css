@@ -1,5 +1,7 @@
 body{
 			background-color: hsl(0, 0%, 98%);
+            <hr>: 2px solid #ececec;
+}
 	}
 
 h1,h2,h3,h4,h5,h6{
@@ -37,7 +39,7 @@ h1,h2,h3,h4,h5,h6{
 
 
 .user_card {
-    width: 350px;
+    width: 500px;
     margin-top: 60px;
     margin-bottom: auto;
     background: #84bfac;
@@ -94,7 +96,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .user_card1 {
-	width: 450px;
+	width: 700px;
 	margin-top: 60px;
 	margin-bottom: auto;
 	background: #84bfac;
@@ -114,3 +116,20 @@ h1,h2,h3,h4,h5,h6{
     border: 1px solid #d0d0d0;
     border-radius: 10px;
   }
+
+  .user_card2 {
+    width: 1400px;
+    margin-top: 60px;
+    margin-bottom: auto;
+    background: #dee4e2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}

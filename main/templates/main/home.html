@@ -1,9 +1,14 @@
 {% extends 'main/navbar.html' %}
 {% load static %}
 {% block content %}
-	<br><br>
-	<center><h1>Current Open Tenders</h1></center>
-	<br><br>
+	<br><center><h1>Current Open Tenders</h1></center><br>
+	<div>
+		<img src="{% static 'images/tenders.jpg' %}" alt="My Image"
+		class="rounded mx-auto d-block" style="">
+		<br>
+	</div>
+	
+	<br><hr style="height:2px;border-width:0;color:gray;background-color:gray">
 	<div class="box-element">
 		<div class="cart-row">
 			<div style="flex:1"><strong>Tender No</strong></div>
@@ -23,6 +28,7 @@
 			<div style="flex:1">{{tender.duedate}}</div>
 		</div>
 		{% endfor %}
+		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 	</div>
 	<br><br>
 {% endblock content %}

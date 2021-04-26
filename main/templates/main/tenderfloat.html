@@ -13,6 +13,9 @@
 			<div class="d-flex justify-content-center form_container">
 				<form method="POST" action="">
 					{% csrf_token %}
+					<img src="{% static 'images/float.jpg' %}" alt="My Image"
+                			class="rounded mx-auto d-block" style="height: 155px;">
+							<br>
 					<div class="input-group mb-3">
 						<div class="input-group-append">
 							<span class="input-group-text">Product &emsp;&emsp;</span>

@@ -14,6 +14,7 @@ urlpatterns = [
     path('registerseller/', views.registerPageseller, name="registerseller"),
 	path('contactus/', views.contactus, name="contactus"),
 	path('aboutus/', views.aboutus, name="aboutus"),
+	path('tenderprocess/', views.tenderprocess, name="tenderprocess"),
 	path('tenderfloat/', views.tenderfloat, name="tenderfloat"),
 	path('quotation/', views.quotation, name="quotation"),
 	path('updateasclosed/<int:pk>/', views.updateasclosed, name="updateasclosed"),

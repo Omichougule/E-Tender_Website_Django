@@ -1,0 +1,39 @@
+# Admin #
+User: omkar
+Pass: omkar@12345
+
+
+
+# Buyer #
+user: anish
+Name: Anish Parlikar
+email: anishparlikar001@gmail.com
+pass: ani@12345
+
+user: neeraj
+Name: Neeraj Padhye
+email: 
+pass: neer@12345
+
+
+
+# Seller #
+user: mugdha
+Name: Mugdha Patil
+email: mugdhap03@gmail.com
+pass: mug@12345
+
+user: tanish
+Name: Tanish Kapoor
+email: 
+pass: tani@12345
+
+user: ishika
+Name: Ishika Joshi
+email:
+pass: ish@12345
+
+user: abhijit
+Name: Abhijit Chougule
+email:
+pass: abhi@12345
