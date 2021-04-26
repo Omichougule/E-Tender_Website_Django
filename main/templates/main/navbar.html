@@ -7,17 +7,21 @@
 
 	<title>eTendering System</title>
 
+	<!-- Required meta tags always come first -->
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
-	 <!-- scripts used for admin date calender -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 
+	<!-- scripts used for admin date calender -->
 	<script src="{% url 'js-catlog' %}"></script>
     <script src="{% static '/admin/js/core.js' %}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,30 +33,23 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		  <ul class="navbar-nav mr-auto ">
 			<li class="nav-item">
-			  <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
 			</li>
-			  <li class="nav-item">
-			  <a class="nav-link" href="{% url 'contactus' %}">Contact Us <span class="sr-only">(current)</span></a>
+			<li class="nav-item ">
+				<a class="nav-link" href="{% url 'tenderfloat' %}">Tender Float<span class="sr-only">(current)</span></a>
 			</li>
-  
-  
-			  <li class="nav-item ">
-			  <a class="nav-link" href="{% url 'tenderfloat' %}">Tender Float<span class="sr-only">(current)</span></a>
+			<li class="nav-item ">
+				<a class="nav-link" href="{% url 'quotation' %}">Bid a Quotation<span class="sr-only">(current)</span></a>
 			</li>
-			  <li class="nav-item ">
-			  <a class="nav-link" href="{% url 'quotation' %}">Bid a Quotation<span class="sr-only">(current)</span></a>
+			<li class="nav-item ">
+				<a class="nav-link" href="{% url 'received' %}">Quotations Received<span class="sr-only">(current)</span></a>
 			</li>
-			  </li>
-			  <li class="nav-item ">
-			  <a class="nav-link" href="{% url 'received' %}">Quotations Received<span class="sr-only">(current)</span></a>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'awarded' %}">Quotations Awarded<span class="sr-only">(current)</span></a>
 			</li>
-  
-			  </li>
-			  <li class="nav-item">
-			  <a class="nav-link" href="{% url 'awarded' %}">Quotations Awarded<span class="sr-only">(current)</span></a>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'contactus' %}">Contact Us <span class="sr-only">(current)</span></a>
 			</li>
-			   </li>
-			  </li>
 		  </ul>
 
 
