@@ -27,7 +27,7 @@ class TenderForm(ModelForm):
 class CreateUserForm(UserCreationForm):
 	class Meta:
 		model = User
-		fields = ['username', 'email', 'password1', 'password2']
+		fields = ['username','first_name','last_name', 'email', 'password1', 'password2']
 
 
 #New Quotation bid Form
@@ -37,8 +37,8 @@ class QuotReceivedForm(ModelForm):
 		fields = ['tender', 'quotamount']
 
 
-#
-#class QuotStatusChange(ModelForm):
-#	class Meta:
-#		model = Quotation
-#		fields = ['tender', 'quotamount', 'status']
+
+class QuotStatusChange(ModelForm):
+	class Meta:
+		model = Quotation
+		fields = ['tender', 'quotamount', 'status']

@@ -131,13 +131,16 @@ def received(request):
 	context = {'quotations': quotations}
 	return render(request, 'main/received.html', context)
 
-#update the status as Awarded for the quotation
+# update the status as Awarded for the quotation
 @allowed_users(allowed_roles=['admin','Buyer'])
 def updateasclosed(request, pk):
 	q = Quotation.objects.get(id=pk)
 	q.status = "Awarded"
 	q.save()
 	t=q.tender.id
+	awarded_tender = Tender.objects.get(id=t)
+	awarded_tender.status = "Awarded"
+	awarded_tender.save()
 	print(t)
 	quotations = Quotation.objects.filter(tender=t)
 	print(quotations)
@@ -146,6 +149,16 @@ def updateasclosed(request, pk):
 			q1.status="Closed"
 			q1.save()
 	return redirect('received')
+
+# @allowed_users(allowed_roles=['admin','Buyer'])
+# def updateasclosed(request, pk):
+# 	q = Quotation.objects.get(id=pk)
+# 	form1 = QuotStatusChange(instance=q)
+# 	if request.method == 'POST':
+# 		form1 = QuotStatusChange(request.POST, instance=q)
+# 		if form1.is_valid():
+# 			form1.save()
+# 			return redirect('received')
 
 #Awarded Quotations
 def awarded(request):

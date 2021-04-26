@@ -17,6 +17,9 @@
 				<div class="d-flex justify-content-center form_container">
 					<form method="POST" action="">
 						{% csrf_token %}
+						<img src="{% static 'images/etender.jpg' %}" alt="My Image"
+                			class="rounded mx-auto d-block" style="height: 155px;">
+							<br>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -40,19 +43,30 @@
 
 				</div>
 				{% if user.is_authenticated %}
-			   </div>
-		  		<span class="hello-msg">Welcome, {{ user.username }} !!!</span>
-  				<span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+			   	</div>
+		  			<span class="hello-msg">Welcome, {{ user.username }} !!!</span>
+  					<span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
 		  		</div>
 				{% endif %}
 				{% for message in messages %}
 					<p id="messages">{{message}}</p>
 				{% endfor %}
+				<div class="mt-4">
+					<div class="d-flex justify-content-center">
+						Don't have an account?
+					</div>
+					<div class="d-flex justify-content-center links">
+						Register as Seller <a href="{% url 'registerseller' %}" class="ml-2">Sign Up</a>
+					</div>
+					<div class="d-flex justify-content-center links">
+						Register as Buyer <a href="{% url 'registerbuyer' %}" class="ml-2">Sign Up</a>
+					</div>
+					<div class="d-flex justify-content-center links">
+						Forgot password? <a href="{% url 'reset_password' %}" class="ml-2">Reset password</a>
+					</div>
+				</div>
+				<br>
 
-
-<br>
-<center>Don't have an account? <br> <a href="{% url 'registerseller' %}" class="ml-2">Register as Seller</a><br> <a href="{% url 'registerbuyer' %}"  class="ml-2" >Register as Buyer</a>
-</center>
 
 			</div>
 		</div>

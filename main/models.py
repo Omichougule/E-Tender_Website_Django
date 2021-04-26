@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User    #User model is imported which is default model of Django
-
+import datetime, time
 
 # Create your models here.
 # Structure for Database
@@ -15,7 +15,7 @@ class Tender(models.Model):
 	product = models.CharField(max_length=50, null=True, blank=False)
 	description = models.CharField(max_length=200, null=True)
 	quantity = models.IntegerField(default=0, null=True, blank=False)
-	#startdate = models.DateTimeField(auto_now_add=True, null=True)
+	#startdate = models.DateTimeField(default=datetime.datetime.now, null=True, blank=False)
 	startdate = models.DateTimeField(null=True, blank=False)
 	duedate = models.DateTimeField(null=True, blank=False)
 	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
