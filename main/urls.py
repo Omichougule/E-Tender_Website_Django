@@ -21,7 +21,7 @@ urlpatterns = [
 	path('awarded/', views.awarded, name="awarded"),
 
 	# Admin date calender
-	path('jsi18n', JavaScriptCatalog.as_view(), name='js-catlog'),  
+	path('jsi18n', JavaScriptCatalog.as_view(), name='js-catlog'),
 
 	# Password Reset
 	path('reset_password/', auth_views.PasswordResetView.as_view(template_name="main/password_reset.html"), name="reset_password"),

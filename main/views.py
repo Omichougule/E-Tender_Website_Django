@@ -1,33 +1,30 @@
 from django.shortcuts import render, redirect
-from django.forms import inlineformset_factory
-from django.http import JsonResponse
-import json
+
 import datetime, time
+from django.utils import timezone
 from datetime import date
-import pytz
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import *
+import pytz
 from .decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.models import Group
 from django.contrib.auth import login as auth_login
 from django import template, forms
-from django.utils import timezone
-from django.contrib.admin.widgets import AdminSplitDateTime
 
 #Home Page
 def home(request):
-	# utc=pytz.UTC
-	# tenders = Tender.objects.filter(status="Open")                #Tender Entries with Open Status
-	# today = datetime.datetime.now()
-	# today = utc.localize(today)
-	# for tender in tenders:
-	# 	if today > tender.duedate:
-	# 		tender.status = "Closed"
-
+	utc=pytz.UTC
 	tenders = Tender.objects.filter(status="Open")   				#Tender Entries with Open Status
+	today = datetime.datetime.now()
+	today = utc.localize(today)
+	for tender in tenders:
+		if today > tender.duedate:
+			tender.status = "Closed"
+			tender.save()
+
 	context = {'tenders': tenders}
 	return render(request, 'main/home.html', context)
 
