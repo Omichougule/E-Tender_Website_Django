@@ -1,6 +1,9 @@
 {% extends 'main/navbar.html' %}
 {% load static %}
+
 {% block content %}
+{% load filters %}
+
 	<br><center><h1>Current Open Tenders</h1></center><br>
 	<div>
 		<img src="{% static 'images/tenders.jpg' %}" alt="My Image"
@@ -23,7 +26,7 @@
 			<div style="flex:1">{{tender.id}}</div>
 			<div style="flex:1">{{tender.product}}</div>
 			<div style="flex:1">{{tender.description}}</div>
-			<div style="flex:1">{{tender.quantity}}</div>
+			<div style="flex:1">{{tender.quantity|kg}}</div>
 			<div style="flex:1">{{tender.startdate}}</div>
 			<div style="flex:1">{{tender.duedate}}</div>
 		</div>

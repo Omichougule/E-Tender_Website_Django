@@ -1,6 +1,6 @@
 # Admin #
 User: omkar
-Pass: omkar@12345
+Pass: omkar@12345 
 
 
 
@@ -16,7 +16,7 @@ email:
 pass: neer@12345
 
 
-
+    
 # Seller #
 user: mugdha
 Name: Mugdha Patil

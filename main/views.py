@@ -124,6 +124,7 @@ def quotation(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin','Buyer'])
 def received(request):
+	#quotations = Quotation.objects.filter(status="Open")
 	quotations = Quotation.objects.all()
 	context = {'quotations': quotations}
 	return render(request, 'main/received.html', context)

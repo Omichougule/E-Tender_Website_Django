@@ -1,6 +1,7 @@
 {% extends 'main/navbar.html' %}
 {% load static %}
 {% block content %}
+{% load filters %}
 <br><br>
 	<center><h1>Quotations Received</h1></center>
 	<br><br>
@@ -22,10 +23,10 @@
 					{% if request.user == q.tender.user %}
 					<div class="cart-row">
 						<div style="flex:1">{{q.id}}</div>
-						<div style="flex:1">{{q.user}}</div>
+						<div style="flex:1">{{q.user.first_name}} {{q.user.last_name}}</div>
 						<div style="flex:1">{{q.tender.id}}</div>
-						<div style="flex:1">{{q.tender.user}}</div>
-						<div style="flex:1">{{q.quotamount}}</div>
+						<div style="flex:1">{{q.tender.user.first_name}} {{q.tender.user.last_name}}</div>
+						<div style="flex:1">{{q.quotamount|currency}}</div>
 						<div style="flex:1">{{q.status}}</div>
 						<div style="flex:1"><a class="btn btn-sm btn-info" href="{% url 'updateasclosed' q.id %}" data-html="true" data-toggle="tooltip"
 							title="Update status as Awarded" data-placement="bottom">Update</a></div>

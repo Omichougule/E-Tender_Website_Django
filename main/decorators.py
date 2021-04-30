@@ -13,7 +13,7 @@ def unauthenticated_user(view_func):
 	return wrapper_func
 
 
-# The function will continue to show a perticular page which is allowed to see by a perticular group else will show
+# The function will continue to show a particular page which is allowed to see by a perticular group else will show
 # 'You are not authorized to view this page' message.
 # The function will continue if logged in user role (group) is in the allowed roles.
 def allowed_users(allowed_roles=[]):
