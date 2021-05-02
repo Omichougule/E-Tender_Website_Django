@@ -1,4 +1,6 @@
 {% load static %}
+{% load filters %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,29 +33,53 @@
 		</button>
   
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		  <ul class="navbar-nav mr-auto ">
-			<li class="nav-item">
-				<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item ">
-				<a class="nav-link" href="{% url 'tenderfloat' %}">Tender Float<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item ">
-				<a class="nav-link" href="{% url 'quotation' %}">Bid a Quotation<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item ">
-				<a class="nav-link" href="{% url 'received' %}">Quotations Received<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{% url 'awarded' %}">Quotations Awarded<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{% url 'tenderprocess' %}">Tender Process <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{% url 'contactus' %}">Contact Us <span class="sr-only">(current)</span></a>
-			</li>
-		  </ul>
+			<ul class="navbar-nav mr-auto ">
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+				</li>
+				{% if user.is_authenticated %}
+					{% if request.user|has_group:"Buyer" %}	
+						
+						<li class="nav-item ">
+							<a class="nav-link" href="{% url 'tenderfloat' %}">Tender Float<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="{% url 'received' %}">Quotations Received<span class="sr-only">(current)</span></a>
+						</li>
+
+					{% endif %}
+					{% if request.user|has_group:"Seller" %}
+						<li class="nav-item ">
+							<a class="nav-link" href="{% url 'quotation' %}">Bid a Quotation<span class="sr-only">(current)</span></a>
+						</li>
+					{% endif %}	
+				
+				{% else %}
+					
+					<li class="nav-item ">
+						<a class="nav-link" href="{% url 'tenderfloat' %}">Tender Float<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item ">
+						<a class="nav-link" href="{% url 'quotation' %}">Bid a Quotation<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item ">
+						<a class="nav-link" href="{% url 'received' %}">Quotations Received<span class="sr-only">(current)</span></a>
+					</li>
+					
+
+				{% endif %}
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'awarded' %}">Quotations Awarded<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'tenderprocess' %}">Tender Process <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'contactus' %}">Contact Us <span class="sr-only">(current)</span></a>
+				</li>
+
+			</ul>
 
 
 			{% if user.is_authenticated %}

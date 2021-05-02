@@ -139,9 +139,9 @@ def updateasclosed(request, pk):
 	awarded_tender = Tender.objects.get(id=t)
 	awarded_tender.status = "Awarded"
 	awarded_tender.save()
-	print(t)
-	quotations = Quotation.objects.filter(tender=t)
-	print(quotations)
+	# print(t)
+	quotations = Quotation.objects.filter(tender = t)
+	# print(quotations)
 	for q1 in quotations:
 		if q1.id != pk:
 			q1.status="Closed"
