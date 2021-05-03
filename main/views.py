@@ -14,6 +14,10 @@ from django.contrib.auth.models import Group
 from django.contrib.auth import login as auth_login
 from django import template, forms
 
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+
 #Home Page
 def home(request):
 	utc=pytz.UTC
@@ -135,10 +139,61 @@ def updateasclosed(request, pk):
 	q = Quotation.objects.get(id=pk)
 	q.status = "Awarded"
 	q.save()
+	# Confirmation Email Buyer
+	template_buyer = render_to_string(
+		'main/email_buyer.html', 
+		{
+			'buyer_first_name': q.tender.user.first_name ,
+			'buyer_last_name': q.tender.user.last_name ,
+			'tender_no': q.tender.id,
+			'product': q.tender.product,
+			'description': q.tender.description,
+			'quantity': q.tender.quantity,
+			'seller_first_name': q.user.first_name,
+			'seller_last_name': q.user.last_name,
+			'quotation_no': q.id ,
+			'quotamount': q.quotamount ,
+		}
+	)
+	template_seller = render_to_string(
+		'main/email_seller.html',
+		{
+			'buyer_first_name': q.tender.user.first_name ,
+			'buyer_last_name': q.tender.user.last_name ,
+			'tender_no': q.tender.id,
+			'product': q.tender.product,
+			'description': q.tender.description,
+			'quantity': q.tender.quantity,
+			'seller_first_name': q.user.first_name,
+			'seller_last_name': q.user.last_name,
+			'quotation_no': q.id ,
+			'quotamount': q.quotamount ,
+		}
+	)
+
+	email_buyer = EmailMessage(
+		'Tender Awarded!',
+		template_buyer,
+		settings.EMAIL_HOST_USER,
+		[q.tender.user.email]
+	)
+	email_seller = EmailMessage(
+		'Quotation Awarded!',
+		template_seller,
+		settings.EMAIL_HOST_USER,
+		[q.user.email]
+	)
+
+	email_buyer.fail_silently=False
+	email_seller.fail_silently=False
+	email_buyer.send()
+	email_seller.send()
+	#
 	t=q.tender.id
 	awarded_tender = Tender.objects.get(id=t)
 	awarded_tender.status = "Awarded"
 	awarded_tender.save()
+	#
 	# print(t)
 	quotations = Quotation.objects.filter(tender = t)
 	# print(quotations)
@@ -146,6 +201,23 @@ def updateasclosed(request, pk):
 		if q1.id != pk:
 			q1.status="Closed"
 			q1.save()
+			template_closed = render_to_string(
+				'main/email_closed.html', 
+				{
+					'seller_first_name': q1.user.first_name,
+					'quotation_no': q1.id ,
+				}
+			)
+			email_closed = EmailMessage(
+				'Quotation Status',
+				template_closed,
+				settings.EMAIL_HOST_USER,
+				[q1.user.email]
+			)
+			email_closed.fail_silently=False
+			email_closed.send()
+
+			
 	return redirect('received')
 
 # @allowed_users(allowed_roles=['admin','Buyer'])
@@ -175,3 +247,7 @@ def tenderprocess(request):
 # About us Page
 def aboutus(request):
 	return render(request, 'main/aboutus.html')
+
+
+
+

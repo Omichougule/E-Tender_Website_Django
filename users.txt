@@ -9,6 +9,7 @@ user: anish
 Name: Anish Parlikar
 email: anishparlikar001@gmail.com
 pass: ani@12345
+email-pass: Anish@12345
 
 user: neeraj
 Name: Neeraj Padhye
@@ -25,13 +26,14 @@ pass: mug@12345
 
 user: tanish
 Name: Tanish Kapoor
-email: 
+email: kapoortanish42@gmail.com
 pass: tani@12345
 
 user: ishika
 Name: Ishika Joshi
-email:
+email: ishikajoshi46@gmail.com
 pass: ish@12345
+emial-pass: Ishika@12345
 
 user: abhijit
 Name: Abhijit Chougule
