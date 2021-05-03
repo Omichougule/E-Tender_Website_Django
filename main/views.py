@@ -134,12 +134,13 @@ def received(request):
 	return render(request, 'main/received.html', context)
 
 # update the status as Awarded for the quotation
+# Automated Confirmation E-mail
 @allowed_users(allowed_roles=['admin','Buyer'])
 def updateasclosed(request, pk):
 	q = Quotation.objects.get(id=pk)
 	q.status = "Awarded"
 	q.save()
-	# Confirmation Email Buyer
+	# Confirmation Email Buyer (Awarded)
 	template_buyer = render_to_string(
 		'main/email_buyer.html', 
 		{
@@ -155,6 +156,7 @@ def updateasclosed(request, pk):
 			'quotamount': q.quotamount ,
 		}
 	)
+	# Confirmation Email Seller (Awarded)
 	template_seller = render_to_string(
 		'main/email_seller.html',
 		{
@@ -184,16 +186,17 @@ def updateasclosed(request, pk):
 		[q.user.email]
 	)
 
+	
 	email_buyer.fail_silently=False
 	email_seller.fail_silently=False
 	email_buyer.send()
 	email_seller.send()
-	#
+	
 	t=q.tender.id
 	awarded_tender = Tender.objects.get(id=t)
 	awarded_tender.status = "Awarded"
 	awarded_tender.save()
-	#
+	
 	# print(t)
 	quotations = Quotation.objects.filter(tender = t)
 	# print(quotations)
@@ -201,6 +204,7 @@ def updateasclosed(request, pk):
 		if q1.id != pk:
 			q1.status="Closed"
 			q1.save()
+			# Quotation Update Email (Closed)
 			template_closed = render_to_string(
 				'main/email_closed.html', 
 				{
