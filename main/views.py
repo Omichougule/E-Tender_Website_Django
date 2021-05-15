@@ -129,7 +129,8 @@ def quotation(request):
 @allowed_users(allowed_roles=['admin','Buyer'])
 def received(request):
 	#quotations = Quotation.objects.filter(status="Open")
-	quotations = Quotation.objects.all()
+	#quotations = Quotation.objects.all()
+	quotations = Quotation.objects.order_by("quotamount").filter(status="Open")
 	context = {'quotations': quotations}
 	return render(request, 'main/received.html', context)
 
