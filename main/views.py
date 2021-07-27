@@ -18,6 +18,18 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 
+import threading  
+
+# Multithreading
+class EmailThread(threading.Thread):
+
+	def __init__(self, email):
+		self.email = email
+		threading.Thread.__init__(self)
+
+	def run(self):
+		self.email.send(fail_silently = False)
+
 #Home Page
 def home(request):
 	utc=pytz.UTC
@@ -129,8 +141,8 @@ def quotation(request):
 @allowed_users(allowed_roles=['admin','Buyer'])
 def received(request):
 	#quotations = Quotation.objects.filter(status="Open")
-	#quotations = Quotation.objects.all()
-	quotations = Quotation.objects.order_by("quotamount").filter(status="Open")
+	quotations = Quotation.objects.all()
+	#quotations = Quotation.objects.order_by("quotamount").filter(status="Open")
 	context = {'quotations': quotations}
 	return render(request, 'main/received.html', context)
 
@@ -187,11 +199,10 @@ def updateasclosed(request, pk):
 		[q.user.email]
 	)
 
-	
-	email_buyer.fail_silently=False
-	email_seller.fail_silently=False
-	email_buyer.send()
-	email_seller.send()
+	EmailThread(email_buyer).start()
+	# email_buyer.send(fail_silently=False)
+	EmailThread(email_seller).start()
+	# email_seller.send(fail_silently=False)
 	
 	t=q.tender.id
 	awarded_tender = Tender.objects.get(id=t)
@@ -219,8 +230,8 @@ def updateasclosed(request, pk):
 				settings.EMAIL_HOST_USER,
 				[q1.user.email]
 			)
-			email_closed.fail_silently=False
-			email_closed.send()
+			EmailThread(email_closed).start()
+			# email_closed.send(fail_silently=False)
 
 			
 	return redirect('received')
